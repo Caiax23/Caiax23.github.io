@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mappa Italia - Punto su Roma</title>
+  <!-- Link a Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+ <nav class="navbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="immagini/logo-removebg-preview.png" alt="Logo Home">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="italia.html">Italia</a></li>
+    <li><a href="france.html">Francia</a></li>
+    <li><a href="espana.html">Spagna</a></li>
+    <li><a href="england.html">Inghilterra</a></li>
+    <li><a href="germany.html">Germania</a></li>
+    <li><a href="netherlands.html">Paesi Bassi</a></li>
+  </ul>
+
+  <a href="index.html" class="back-arrow invisibile" title="Torna alla Home">
+    <img src="immagini/freccia2.png" alt="Torna alla Home">
+ </a>
+
+</nav>
+<div class="legenda">
+  <p class="scrittaLegenda">Legenda</p>
+  
+<div class="divLegenda">
+  <img src="immagini/marker-icon-blue.png" class="immagineLegenda">
+  <p class="testoLegenda">LIgue 1</p>
+</div>
+
+<div class="divLegenda">
+  <img src="immagini/marker-icon-green.png" class="immagineLegenda">
+  <p class="testoLegenda">Ligue 2</p>
+</div>
+
+
+</div>    
+
+  <div id="map"></div>
+
+  <!-- Link a Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Crea la mappa centrata su Roma
+    const map = L.map('map').setView([46.6034, 1.8883], 6); // Latitudine, Longitudine, Zoom
+
+
+    // Aggiunge il layer della mappa OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Lista di stadi (puoi aggiungerne fino a 50 o più)
+    const stadi = [
+      {
+        nome: "Parigi",
+        serie: "Ligue 1",
+        descrizione: "Parco Dei Principi",
+        lat: 48.844826628216964, 
+        lon: 2.25224084369362248,
+        immagine :"./immagini/a.png"
+
+      },
+      {
+        nome: "Marseille",
+        serie: "Ligue 1",
+        descrizione: "Stade Vélodrome",
+        lat: 43.27007770740572, 
+        lon: 5.395933684023361,
+        immagine :"./immagini/b.png"
+
+      },
+      {
+        nome: "Strasburgo",
+        serie: "Ligue 1",
+        descrizione: "Stade de la Meianau",
+        lat: 48.56019849042955, 
+        lon: 7.755098711235747,
+        immagine :"./immagini/c.png"
+      
+      },
+       {
+        nome: "Lyon",
+        serie: "Ligue 1",
+        descrizione: "Groupama Stadium",
+        lat: 45.76544888817582,
+        lon: 4.981976553439521,
+        immagine :"./immagini/d.png"
+      
+      },
+       {
+        nome: "Monaco",
+        serie: "Ligue 1",
+        descrizione: "Stade Louis II",
+        lat: 43.72786077940939, 
+        lon: 7.4154857803357,
+        immagine :"./immagini/e.png"
+      
+      },
+       {
+        nome: "Lille",
+        serie: "Ligue 1",
+        descrizione: "Decathlon Aréna Stade Pierre Mauroy",
+        lat: 50.61206014350043, 
+        lon: 3.130377438312986,
+        immagine :"./immagini/f.png"
+      
+      },
+      {
+        nome: "Angers",
+        serie: "Ligue 1",
+        descrizione: "Raymond Kopa",
+        lat: 47.461160051871545,
+        lon: -0.5306956446326191,
+        immagine :"./immagini/g.png"
+      
+      },
+       {
+        nome: "Nantés",
+        serie: "Ligue 1",
+        descrizione: "Stadio della Beaujoire",
+        lat: 47.25621252621081, 
+        lon: -1.5246106428074397,
+        immagine :"./immagini/h.png"
+      
+      },
+      {
+        nome: "Rennes",
+        serie: "Ligue 1",
+        descrizione: "Roazhon Park",
+        lat: 48.10763851548512,   
+        lon: -1.7129307752932523,
+        immagine :"./immagini/i.png"
+      
+      },
+      {
+        nome: "Nizza",
+        serie: "Ligue 1",
+        descrizione: "Allianz Riviera",
+        lat:  43.7052485337,
+        lon:  7.192588039860483,
+        immagine :"./immagini/j.png"
+      
+      },
+      {
+        nome: "Lorient",
+        serie: "Ligue 2",
+        descrizione: "Stade du Moustoir",
+        lat: 47.74890600221932, 
+        lon: -3.3693859752018125,
+        immagine :"./immagini/k.png"
+      
+      },
+      {
+        nome: "Metz",
+        serie: "Ligue 2",
+        descrizione:"Stadio Saint Symphorien",
+        lat: 49.110138888616866, 
+        lon: 6.158016640096946,
+        immagine :"./immagini/o.png"
+      
+      },
+      {
+        nome: "Clermont",
+        serie: "Ligue 2",
+        descrizione:"Stadio Gabriel Montpied",
+        lat: 45.81590756865959, 
+        lon: 3.1216888264589033,
+        immagine :"./immagini/l.png"
+      
+      },
+       {
+        nome: "Ajaccio",
+        serie: "Ligue 2",
+        descrizione: "Stade François Coty",
+        lat: 41.93098520584406,
+        lon:  8.776660195606674,
+        immagine :"./immagini/m.png"
+      
+      },
+       {
+        nome: "Caen",
+        serie: "Ligue 2",
+        descrizione: "Stadio Michel d'Ornano",
+        lat: 49.17961521150564,
+        lon:  -0.39682878873604566,
+        immagine :"./immagini/n.png"
+    }];
+
+
+
+    // Ciclo per aggiungere i marker
+stadi.forEach(stadio => {
+
+  let iconOptions = {
+    title: "Stadio",
+    icon: L.icon({  // valore predefinito (può essere un'icona generica o nulla)
+      iconUrl: "./immagini/marker-icon-default.png",
+      iconSize: [25, 25]
+    })
+  };
+  var textcolorclass = "testo-blu"
+  var borderColor = "bordo-blu";
+  if (stadio.serie === "Ligue 1") {
+    textcolorclass = "testo-blu"
+    borderColor = "bordo-blu";
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-blue.png",
+      iconSize: [25, 35],
+    });
+  } else if (stadio.serie === "Ligue 2") {
+    borderColor = "bordo-verde";
+     textcolorclass = "testo-verde"
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-green.png",
+      iconSize: [25, 35]
+    });
+  } else if (stadio.serie === "C") {
+    borderColor = "bordo-viola";
+     textcolorclass = "testo-viola"
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-violet.png",
+      iconSize: [25, 35]
+    });
+  }
+
+  L.marker([stadio.lat, stadio.lon], iconOptions)
+    .addTo(map)
+    .bindPopup(`<b class="${textcolorclass}">${stadio.nome}</b> <br>${stadio.descrizione}  <img src="${stadio.immagine}" alt="Immagine di ${stadio.nome}" class="immagineStadio ${borderColor}"/>  `);
+});
+  </script>
+</body>
+</html>

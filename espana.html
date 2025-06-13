@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mappa Italia - Punto su Roma</title>
+  <!-- Link a Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+  </style>
+</head>
+<body>
+ <nav class="navbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="immagini/logo-removebg-preview.png" alt="Logo Home">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="italia.html">Italia</a></li>
+    <li><a href="france.html">Francia</a></li>
+    <li><a href="espana.html">Spagna</a></li>
+    <li><a href="england.html">Inghilterra</a></li>
+    <li><a href="germany.html">Germania</a></li>
+    <li><a href="netherlands.html">Paesi Bassi</a></li>
+  </ul>
+
+  <a href="index.html" class="back-arrow invisibile" title="Torna alla Home">
+    <img src="immagini/freccia2.png" alt="Torna alla Home">
+ </a>
+
+</nav>
+   <div class="legenda">
+  <p class="scrittaLegenda">Legenda</p>
+  
+<div class="divLegenda">
+  <img src="immagini/marker-icon-blue.png" class="immagineLegenda">
+  <p class="testoLegenda">La Laliga</p>
+</div>
+
+<div class="divLegenda">
+  <img src="immagini/marker-icon-green.png" class="immagineLegenda">
+  <p class="testoLegenda">La Laliga 2</p>
+</div>
+
+</div>
+
+
+
+  <div id="map"></div>
+
+  <!-- Link a Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Crea la mappa centrata su Roma
+    const map = L.map('map').setView([40.4168, -3.7038], 6); // Latitudine, Longitudine, Zoom
+
+
+    // Aggiunge il layer della mappa OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Lista di stadi (puoi aggiungerne fino a 50 o più)
+    const stadi = [
+      {
+        nome: "Barcellona",
+        serie: "Laliga",
+        descrizione: "Camp Nou",
+        lat: 41.38108917542482, 
+        lon: 2.1228412551103233,
+        immagine :"./immagini/camp nou.png"
+
+      },
+      {
+        nome: "Madrid",
+        serie: "Laliga",
+        descrizione:"Santiago Bernabeu",
+        lat: 40.453267188801895, 
+        lon: -3.688376633133469,
+        immagine :"./immagini/berna.png"
+
+      },
+      {
+        nome: "Valladolid",
+        serie: "Laliga",
+        descrizione: " Estadio José Zorrilla ",
+        lat: 41.64472266790061, 
+        lon: -4.761059512336155,
+        immagine :"./immagini/Estadio Municipal José Zorrilla.png"
+      
+      },
+       {
+        nome: "Valencia",
+        serie: "Laliga",
+        descrizione: "Estadio de Mestalla ",
+        lat: 39.47480464117229,
+        lon: -0.35851954481283693,
+        immagine :"./immagini/Estadio de Mestalla.png"
+      
+      },
+       {
+        nome: "Villareal",
+        serie: "Laliga",
+        descrizione: "Estadio de la Ceramica",
+        lat: 39.9440502816275, 
+        lon: -0.103159560291046,
+        immagine :"./immagini/Estadio de la Ceramica.png"
+      
+      },
+       {
+        nome: "Maiorca",
+        serie: "Laliga",
+        descrizione: "Estadio de Son Moix",
+        lat: 39.59005118642506, 
+        lon:  2.6300607262038547,
+        immagine :"./immagini/Estadio-de-Son-Moix.png"
+      
+      },
+      {
+        nome: "Bilbao",
+        serie: "Laliga",
+        descrizione: "Estadio de San Mames",
+        lat: 43.264342451473354, 
+        lon: -2.949373102485431,
+        immagine :"./immagini/Estadio-san-mames.png"
+      
+      },
+       {
+        nome: "Sevilia",
+        serie: "Laliga",
+        descrizione: "Benito Villamarìn",
+        lat: 37.35671390210342, 
+        lon: -5.981765346897306,
+        immagine :"./immagini/Benito-Villamarìn.png"
+      
+      },
+      {
+        nome: "Vitoria-Gasteiz",
+        serie: "Laliga",
+        descrizione: "Estadio de Mendizorroza",
+        lat: 42.83726651987579,   
+        lon: -2.688272489011619,
+        immagine :"./immagini/Estadio Mendizorrotza.png"
+      },
+      {
+        nome: "San Sebastiàn",
+        serie: "Laliga",
+        descrizione: "Estadio Municipal de Anoeta",
+        lat: 43.30157758618669, 
+        lon: -1.9735117006305316,
+        immagine :"./immagini/Estadio-Municipal-de-Anoeta.png"
+      
+      },
+      {
+        nome: "Cadice",
+        serie: "Laliga2",
+        descrizione: "Nuevo Mirandilla",
+        lat: 36.50268721387137, 
+        lon: -6.2729070450749145,
+        immagine :"./immagini/Nuevo-Mirandilla.png"
+      
+      },
+      {
+        nome: "Almeria",
+        serie: "Laliga2",
+        descrizione:"Estadio dei Giochi del Mediterraneo",
+        lat: 36.84031450399491,  
+        lon: -2.4353592226062397,
+        immagine :"./immagini/almeria stadium.png"
+      
+      },
+      {
+        nome: "Granada",
+        serie: "Laliga2",
+        descrizione:"Estadio de Los Cármenes",
+        lat: 37.153030039559894,
+        lon: -3.595681958542747,
+        immagine :"./immagini/Estadio-de-Los-Cármenes.png"
+      
+      },
+       {
+        nome: "Alicante",
+        serie: "Laliga2",
+        descrizione: "Estadio Manuel Valero",
+        lat: 38.26726482499434,
+        lon: -0.6628325603549579,
+        immagine :"./immagini/Estadio-Manuel-Valero.png"
+      
+      },
+       {
+        nome: "Malaga",
+        serie: "Laliga2",
+        descrizione: "Estadio La Rosaleda",
+        lat: 36.73366615581728, 
+        lon: -4.426684189247546,
+        immagine :"./immagini/Estadio-La-Rosaleda.png"
+      
+      }];
+
+
+
+    // Ciclo per aggiungere i marker
+stadi.forEach(stadio => {
+
+  let iconOptions = {
+    title: "Stadio",
+    icon: L.icon({  // valore predefinito (può essere un'icona generica o nulla)
+      iconUrl: "./immagini/marker-icon-default.png",
+      iconSize: [25, 25]
+    })
+  };
+  var textcolorclass = "testo-blu"
+  var borderColor = "bordo-blu";
+  if (stadio.serie === "Laliga") {
+    textcolorclass = "testo-blu"
+    borderColor = "bordo-blu";
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-blue.png",
+      iconSize: [25, 35],
+    });
+  } else if (stadio.serie === "Laliga2") {
+    borderColor = "bordo-verde";
+     textcolorclass = "testo-verde"
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-green.png",
+      iconSize: [25, 35]
+    });
+  } else if (stadio.serie === "C") {
+    borderColor = "bordo-viola";
+     textcolorclass = "testo-viola"
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-violet.png",
+      iconSize: [25, 35]
+    });
+  }
+
+  L.marker([stadio.lat, stadio.lon], iconOptions)
+    .addTo(map)
+    .bindPopup(`<b class="${textcolorclass}">${stadio.nome}</b> <br>${stadio.descrizione}  <img src="${stadio.immagine}" alt="Immagine di ${stadio.nome}" class="immagineStadio ${borderColor}"/>  `);
+});
+  </script>
+</body>
+</html>

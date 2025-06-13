@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mappa Italia - Punto su Roma</title>
+  <!-- Link a Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ <nav class="navbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="immagini/logo-removebg-preview.png" alt="Logo Home">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="italia.html">Italia</a></li>
+    <li><a href="france.html">Francia</a></li>
+    <li><a href="espana.html">Spagna</a></li>
+    <li><a href="england.html">Inghilterra</a></li>
+    <li><a href="germany.html">Germania</a></li>
+    <li><a href="netherlands.html">Paesi Bassi</a></li>
+  </ul>
+
+  <a href="index.html" class="back-arrow invisibile frecciaDesktop" title="Torna alla Home">
+    <img src="immagini/freccia2.png" alt="Torna alla Home">
+ </a>
+
+</nav>
+
+
+  <a href="index.html" class="back-arrow invisibile frecciaMobile" title="Torna alla Home" style="background-color: #0c3f6bfa;">
+    <img src="immagini/freccia2.png" alt="Torna alla Home">
+ </a>
+
+<div class="legenda">
+  <p class="scrittaLegenda">Legenda</p>
+  
+<div class="divLegenda">
+  <img src="immagini/marker-icon-blue.png" class="immagineLegenda">
+  <p class="testoLegenda">Serie A</p>
+</div>
+
+<div class="divLegenda">
+  <img src="immagini/marker-icon-green.png" class="immagineLegenda">
+  <p class="testoLegenda">Serie B</p>
+</div>
+
+<div class="divLegenda">
+  <img src="immagini/marker-icon-violet.png" class="immagineLegenda">
+  <p class="testoLegenda">Serie C</p>
+</div>
+
+</div>
+
+<div id="map"></div>
+
+  <!-- Link a Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Crea la mappa centrata su Roma
+    const map = L.map('map').setView([41.9028, 12.4964], 6); // Latitudine, Longitudine, Zoom
+
+
+    // Aggiunge il layer della mappa OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Lista di stadi (puoi aggiungerne fino a 50 o più)
+    const stadi = [
+      {
+        nome: "Roma",
+        serie: "A",
+        descrizione: "Stadio Olimpico",
+        lat: 41.929520,
+        lon: 12.455348,
+        immagine :"./immagini/oli,pico.png"
+
+      },
+      {
+        nome: "Firenze",
+        serie: "A",
+        descrizione: "Artemio Franchi",
+        lat: 43.780153,
+        lon: 11.280901,
+        immagine :"./immagini/franchi.png"
+
+      },
+      {
+        nome: "Napoli",
+        serie: "A",
+        descrizione: "Diego Armando Maradona",
+        lat: 40.827745,
+        lon: 14.199586,
+        immagine :"./immagini/stadio_napoli_ia.png"
+      
+      },
+       {
+        nome: "Sassuolo",
+        serie: "B",
+        descrizione: "Mapei Stadium",
+        lat: 44.714186,
+        lon: 10.650514,
+        immagine :"./immagini/mapei.png"
+      
+      },
+       {
+        nome: "Pisa",
+        serie: "B",
+        descrizione: "Arena Garibaldi",
+        lat: 43.725355,
+        lon: 10.39911,
+        immagine :"./immagini/arena garibaldi.png"
+      
+      },
+       {
+        nome: "Salerno",
+        serie: "B",
+        descrizione: "Stadio Arechi",
+        lat: 40.645302,
+        lon: 14.823200,
+        immagine :"./immagini/arechi.png"
+      
+      },
+      {
+        nome: "Bari",
+        serie: "B",
+        descrizione: "Stadio San Nicola",
+        lat: 41.084740,
+        lon: 16.840070,
+        immagine :"./immagini/san nicola.png"
+      
+      },
+       {
+        nome: "Palermo",
+        serie: "B",
+        descrizione: "Stadio Renzo Barbera",
+        lat: 38.15309661659594, 
+        lon: 13.342123066623538,
+        immagine :"./immagini/renzo barbera.png"
+      
+      },
+      {
+        nome: "Perugia",
+        serie: "C",
+        descrizione: "Stadio Renato Curi",
+        lat: 43.106201,  
+        lon: 12.357015,
+        immagine :"./immagini/curi.png"
+      
+      },
+      {
+        nome: "Pescara",
+        serie: "C",
+        descrizione: "Stadio Adriatico",
+        lat: 42.45485881243608, 
+        lon: 14.228804504635919,
+        immagine :"./immagini/adriatico.png"
+      
+      },
+      {
+        nome: "Avellino",
+        serie: "C",
+        descrizione: "Stadio Partenio",
+        lat: 40.927299393158954,
+        lon: 14.792320610911341,
+        immagine :"./immagini/avellino.png"
+      
+      },
+      {
+        nome: "Crotone",
+        serie: "C",
+        descrizione:"Stadio Ezio Scida",
+        lat: 39.07956855372804,
+        lon: 17.116583451199457,
+        immagine :"./immagini/scida.png"
+      
+      },
+      {
+        nome: "Padova",
+        serie: "C",
+        descrizione:"Stadio Euganeo",
+        lat: 45.43194853889104, 
+        lon: 11.85827841109753,
+        immagine :"./immagini/padova.png"
+      
+      },
+       {
+        nome: "Lecce",
+        serie: "A",
+        descrizione: "Stadio Via del Mare",
+        lat: 40.356552,
+        lon: 18.184111,
+        immagine :"./immagini/via del mare.png"
+      
+      },
+       {
+        nome: "Verona",
+        serie: "A",
+        descrizione: "Stadio Bentegodi",
+        lat: 45.437023,
+        lon: 10.969525,
+        immagine :"./immagini/verona.png"
+      
+      },
+       {
+        nome: "Bologna",
+        serie: "A",
+        descrizione: "Stadio Dall'Ara",
+        lat: 44.493281,
+        lon: 11.309807,
+        immagine :"./immagini/dallara.png"
+      
+      },
+       {
+        nome: "Milano",
+        serie: "A",
+        descrizione: "San Siro",
+        lat: 45.478178,
+        lon: 9.121274,
+        immagine :"./immagini/SAN SIRO.png"
+      
+      },
+       {
+        nome: "Bergamo",
+        serie: "A",
+        descrizione: "Gewiss Stadium",
+        lat: 45.7089065,
+        lon: 9.6815362,
+        immagine :"./immagini/gewiss.png"
+      
+      },
+       {
+        nome: "Cagliari",
+        serie: "A",
+        descrizione: "Unipol Domus",
+        lat: 39.1998007,
+        lon: 9.1382427,
+        immagine :"./immagini/domus.png"
+      
+      },
+      {
+      nome: "Torino",
+        serie: "A",
+        descrizione: "Allianz Stadium",
+        lat: 45.1087246,
+        lon: 7.6375186,
+        immagine :"./immagini/stadium j.png"
+      // Aggiungi qui altri oggetti...
+    }];
+
+
+
+    // Ciclo per aggiungere i marker
+stadi.forEach(stadio => {
+
+  let iconOptions = {
+    title: "Stadio",
+    icon: L.icon({  // valore predefinito (può essere un'icona generica o nulla)
+      iconUrl: "./immagini/marker-icon-default.png",
+      iconSize: [25, 25]
+    })
+  };
+  var textcolorclass = "testo-blu"
+  var borderColor = "bordo-blu";
+  if (stadio.serie === "A") {
+    textcolorclass = "testo-blu"
+    borderColor = "bordo-blu";
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-blue.png",
+      iconSize: [25, 35],
+    });
+  } else if (stadio.serie === "B") {
+    borderColor = "bordo-verde";
+     textcolorclass = "testo-verde"
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-green.png",
+      iconSize: [25, 35]
+    });
+  } else if (stadio.serie === "C") {
+    borderColor = "bordo-viola";
+     textcolorclass = "testo-viola"
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-violet.png",
+      iconSize: [25, 35]
+    });
+  }
+
+  L.marker([stadio.lat, stadio.lon], iconOptions)
+    .addTo(map)
+    .bindPopup(`<b class="${textcolorclass}">${stadio.nome}</b> <br>${stadio.descrizione}  <img src="${stadio.immagine}" alt="Immagine di ${stadio.nome}" class="immagineStadio ${borderColor}"/>  `);
+});
+  </script>
+</body>
+</html>

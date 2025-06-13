@@ -1,0 +1,359 @@
+body {
+  background-image: "./immagini/sfondo-home.jpg";
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  margin-top:15px;
+  margin-left: 100px;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.immagineStadio{
+width: 160px;
+margin-top: 5px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ombra leggera */
+transition: transform 0.3s ease, box-shadow 0.3s ease; /* transizioni fluide */
+cursor: pointer; /* indica che è cliccabile */
+}
+
+
+
+.bordo-blu {
+  border: 3px solid #007bff; /* Serie A */
+}
+
+.bordo-verde {
+  border: 3px solid #029424; /* Serie B */
+}
+
+.bordo-viola {
+  border: 3px solid #6f42c1; /* Serie C */
+}
+/* Colore testo */
+.testo-blu {
+  color: #007bff;
+}
+.testo-verde {
+  color: #28a745;
+}
+.testo-viola {
+  color: #6f42c1;
+}
+
+.immagineStadio:hover {
+    transform: scale(1.15); /* ingrandimento leggero al passaggio del mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* ombra più profonda */
+}
+
+    .nuovaClasse{
+        color: red;
+    }
+
+.leaflet-popup-content{
+    width: 160px;
+}
+
+
+  .back-arrow:hover {
+  background-color: #eaeaea;
+}
+    #map {
+      height: 100vh; /* Occupa tutta l'altezza della finestra */
+      width: 100%;
+        }.back-arrow {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  text-decoration: none;
+  background-color: #ffffffcc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+  .back-arrow {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  z-index: 1000;
+}
+
+.back-arrow img {
+  width: 40px;       /* Regola dimensione come vuoi */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-arrow img:hover {
+  transform: scale(1.1); /* Effetto zoom al passaggio */
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Desktop */
+  gap: 1.5rem;
+  justify-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  text-align: center;
+  text-decoration: none;
+  border: 5px solid #0c3f6bfa;
+  padding: 10px;
+  border-radius: 8px;
+  width: 200px;
+  transition: transform 0.3s;
+  background-color: #fff;
+}
+@media (min-width: 1024px) {
+  .card {
+    width: 250px; /* Più grandi su desktop */
+  }
+}
+
+.card:hover {
+  transform: scale(1.05);
+  color:hover #166fcf;
+}
+
+.card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Tablet e Mobile: 2 card per riga */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile piccolo: 2 card più strette */
+@media (max-width: 480px) {
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    width: 150px; /* Più piccole per schermi stretti */
+    padding: 0.75rem;
+  }
+}
+
+  .navbar {
+  width: 100%;
+  background-color: #0c3f6bfa;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.navbar .logo img {
+  width: 80px;
+  height: auto;
+  margin-right: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.navbar .logo img:hover {
+  transform: scale(1.1);
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.navbar .nav-links li a:hover {
+  background-color: #000000;
+  border-radius: 4px;
+}
+@media (max-width: 1024px) {
+  .navbar .nav-links {
+    gap: 10px;
+  }
+}
+    #map {
+      height: 100vh; /* Occupa tutta l'altezza della finestra */
+      width: 100%;
+    } .back-arrow:hover {
+  background-color:#000000;
+}
+    #map {
+      height: 100vh; /* Occupa tutta l'altezza della finestra */
+      width: 100%;
+        }.back-arrow {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  text-decoration: none;
+  background-color: #ffffffcc;
+  padding: 8px 12px;
+  border-radius: 6px;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+  .back-arrow {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  z-index: 1000;
+}
+
+.back-arrow img {
+  width: 40px;       /* Regola dimensione come vuoi */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.back-arrow img:hover {
+  transform: scale(1.1); /* Effetto zoom al passaggio */
+}
+
+.invisibile{
+      background: none;
+    box-shadow: none;
+}
+
+.sottotitolo {
+  color:#fff;
+  font-family: "Bebas neun";
+  font-size:60px;
+  text-align: center;
+  white-space: nowrap;      /* Impedisce il ritorno a capo */
+  overflow: hidden;         /* Nasconde eventuale overflow */
+  text-overflow: ellipsis;  /* Aggiunge "..." se serve (opzionale) */
+  font-size: 2rem;          /* Dimensione gestibile su mobile */
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  
+}
+@media (max-width: 480px) {
+  .sottotitolo {
+    font-size: 1.5rem; /* Riduce il testo se serve */
+  }
+}
+
+.legenda{
+position: absolute;
+    color: #fff;
+    top: 6rem;
+    right: 2rem;
+    z-index: 999;
+    background-color: #0c3f6bfa;
+    padding: 20px;
+    border-radius: 15px;
+    font-weight: bold;
+        padding-right: 50px;
+}
+
+.divLegenda{
+  display: flex; align-items: center;margin-bottom: 10px;
+}
+.immagineLegenda{
+  margin-right: 10px; height: 35px;
+}
+
+.testoLegenda{
+  font-weight: bold; margin: 0;
+}
+
+.scrittaLegenda{
+      flex-direction: column;
+    align-items: center;
+    display: flex;
+    margin-left: 20px;
+    font-size: medium;
+}
+
+.divLegenda:hover{background-color: #000000;
+  border-radius: 10px;
+padding: 10px}
+
+  .navbarMobile{
+      display: none;
+  
+  }
+@media screen and (min-width: 670px) {
+.frecciaMobile{
+  display: none;
+}
+}
+
+@media screen and (max-width: 669px) {
+  .navbar{
+    display: none;
+  }
+
+  .navbarMobile{
+      display: block;
+  
+  }
+
+  .legenda{
+    position: absolute;
+    color: #fff;
+    top: 5rem;
+    right: 1rem;
+    z-index: 999;
+    background-color: #0c3f6bfa;
+    padding: 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    padding-right: 20px;
+  }
+}
+
+
+.titoliMobile{
+  color: #fff;
+    text-decoration: auto;
+ 
+}
+ .card h2 {
+  padding: 15px 0;
+  transition: color 0.3s ease;
+}
+
+.card:hover h2 {
+  color: #166fcf; /* cambia colore al passaggio */
+}

@@ -1,0 +1,20 @@
+{
+  "default_language": "it",
+
+  "languages": ["it", "en"],
+  
+  "translations": {
+
+    "title": {
+      "it": "Scegli una nazione",
+      "en": "Choose a country"
+
+    },
+    "Italy": {
+      "it": "Italia",
+      "en": "Italy"
+    }
+    
+
+  }
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Traduzioni con tinyi18n</title>
+    <script src="tinyi18n.js"></script>
+
+</head>
+<body>
+
+  <select id="lang">
+    <option value="it">🇮🇹 Italiano</option>
+    <option value="en">🇬🇧 English</option>
+  </select>
+  <h1>esempio</h1>
+
+  <h1 data-translatekey="titolo"></h1>
+  <p data-translatekey="descrizione"></p>
+    <script>
+      tinyi18n.loadTranslations('translations.json')
+    </script>
+</body>
+</html>

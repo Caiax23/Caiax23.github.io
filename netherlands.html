@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mappa Italia - Punto su Roma</title>
+  <!-- Link a Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+ <nav class="navbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="immagini/logo-removebg-preview.png" alt="Logo Home">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="italia.html">Italia</a></li>
+    <li><a href="france.html">Francia</a></li>
+    <li><a href="espana.html">Spagna</a></li>
+    <li><a href="england.html">Inghilterra</a></li>
+    <li><a href="germany.html">Germania</a></li>
+    <li><a href="netherlands.html">Paesi Bassi</a></li>
+  </ul>
+
+  <a href="index.html" class="back-arrow invisibile" title="Torna alla Home">
+    <img src="immagini/freccia2.png" alt="Torna alla Home">
+ </a>
+
+</nav>
+ <div class="legenda">
+  <p class="scrittaLegenda">Legenda</p>
+  
+<div class="divLegenda">
+  <img src="immagini/marker-icon-blue.png" class="immagineLegenda">
+  <p class="testoLegenda">Eredivisie</p>
+</div>
+
+<div class="divLegenda">
+  <img src="immagini/marker-icon-green.png" class="immagineLegenda">
+  <p class="testoLegenda">Eerste Divisie</p>
+</div>
+
+
+</div>
+  <div id="map"></div>
+
+  <!-- Link a Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Crea la mappa centrata su Roma
+    const map = L.map('map').setView([52.1326, 5.2913], 7); // Latitudine, Longitudine, Zoom
+
+
+    // Aggiunge il layer della mappa OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Lista di stadi (puoi aggiungerne fino a 50 o più)
+    const stadi = [
+     {
+    nome: "Johan Cruijff ArenA",
+    serie: "Eredivisie",
+    descrizione: "Amsterdam",
+    lat: 52.3142,
+    lon: 4.9419,
+    immagine: "./immagini/johan_cruijff_arena.png"
+  },
+  {
+    nome: "De Kuip",
+    serie: "Eredivisie",
+    descrizione: "Rotterdam",
+    lat: 51.9225,
+    lon: 4.4792,
+    immagine: "./immagini/de_kuip.png"
+  },
+  {
+    nome: "Philips Stadion",
+    serie: "Eredivisie",
+    descrizione: "Eindhoven",
+    lat: 51.4416,
+    lon: 5.4697,
+    immagine: "./immagini/philips_stadion.png"
+  },
+  {
+    nome: "De Grolsch Veste",
+    serie: "Eredivisie",
+    descrizione: "Enschede",
+    lat: 52.2325,
+    lon: 6.8958,
+    immagine: "./immagini/de_grolsch_veste.png"
+  },
+  {
+    nome: "Abe Lenstra Stadion",
+    serie: "Eredivisie",
+    descrizione: "Heerenveen",
+    lat: 52.9597,
+    lon: 5.9297,
+    immagine: "./immagini/abe_lenstra_stadion.png"
+  },
+  {
+    nome: "Stadion Galgenwaard",
+    serie: "Eredivisie",
+    descrizione: "Utrecht",
+    lat: 52.0914,
+    lon: 5.1186,
+    immagine: "./immagini/stadion_galgenwaard.png"
+  },
+  {
+    nome: "Euroborg",
+    serie: "Eredivisie",
+    descrizione: "Groninga",
+    lat: 53.2194,
+    lon: 6.5667,
+    immagine: "./immagini/euroborg.png"
+  },
+  {
+    nome: "AFAS Stadion",
+    serie: "Eredivisie",
+    descrizione: "Alkmaar",
+    lat: 52.6311,
+    lon: 4.7486,
+    immagine: "./immagini/AFAS.png"
+  },
+  {
+    nome: "Rat Verlegh Stadion",
+    serie: "Eredivisie",
+    descrizione: "Breda",
+    lat: 51.5864,
+    lon: 4.7769,
+    immagine: "./immagini/rat_verlegh_stadion.png"
+  },
+  {
+    nome: "Koning Willem II Stadion",
+    serie: "Eredivisie",
+    descrizione: "Tilburg",
+    lat: 51.5750,
+    lon: 5.0825,
+    immagine: "./immagini/koning_willem_ii_stadion.png"
+  },
+      {
+    nome: "Bingoal Stadion",
+    serie: "Eerste Divisie",
+    descrizione: "L'Aia",
+    lat: 52.0703,
+    lon: 4.3007,
+    immagine: "./immagini/bingoal_stadion.png"
+  },
+  {
+    nome: "Cambuurstadion",
+    serie: "Eerste Divisie",
+    descrizione: "Leeuwarden",
+    lat: 53.1958,
+    lon: 5.8042,
+    immagine: "./immagini/cambuurstadion.png"
+  },
+  {
+    nome: "Stadion De Vliert",
+    serie: "Eerste Divisie",
+    descrizione: "Den Bosch",
+    lat: 51.6986,
+    lon: 5.3031,
+    immagine: "./immagini/stadion_de_vliert.png"
+  },
+  {
+    nome: "M-Scores Stadion",
+    serie: "Eerste Divisie",
+    descrizione: "Dordrecht",
+    lat: 51.8114,
+    lon: 4.6736,
+    immagine: "./immagini/m_scores_stadion.png"
+  },
+  {
+    nome: "Jan Louwers Stadion",
+    serie: "Eerste Divisie",
+    descrizione: "Eindhoven",
+    lat: 51.4416,
+    lon: 5.4697,
+    immagine: "./immagini/jan_louwers_stadion.png"
+  }];
+
+
+
+    // Ciclo per aggiungere i marker
+stadi.forEach(stadio => {
+
+  let iconOptions = {
+    title: "Stadio",
+    icon: L.icon({  // valore predefinito (può essere un'icona generica o nulla)
+      iconUrl: "./immagini/marker-icon-default.png",
+      iconSize: [25, 25]
+    })
+  };
+  var textcolorclass = "testo-blu"
+  var borderColor = "bordo-blu";
+  if (stadio.serie === "Eredivisie") {
+    textcolorclass = "testo-blu"
+    borderColor = "bordo-blu";
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-blue.png",
+      iconSize: [25, 35],
+    });
+  } else if (stadio.serie === "Eerste Divisie") {
+    borderColor = "bordo-verde";
+     textcolorclass = "testo-verde"
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-green.png",
+      iconSize: [25, 35]
+    });
+  }
+
+  L.marker([stadio.lat, stadio.lon], iconOptions)
+    .addTo(map)
+    .bindPopup(`<b class="${textcolorclass}">${stadio.nome}</b> <br>${stadio.descrizione}  <img src="${stadio.immagine}" alt="Immagine di ${stadio.nome}" class="immagineStadio ${borderColor}"/>  `);
+});
+  </script>
+</body>
+</html>

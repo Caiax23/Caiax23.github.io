@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mappa Italia - Punto su Roma</title>
+  <!-- Link a Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+ <nav class="navbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="immagini/logo-removebg-preview.png" alt="Logo Home">
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="italia.html">Italia</a></li>
+    <li><a href="france.html">Francia</a></li>
+    <li><a href="espana.html">Spagna</a></li>
+    <li><a href="england.html">Inghilterra</a></li>
+    <li><a href="germany.html">Germania</a></li>
+    <li><a href="netherlands.html">Paesi Bassi</a></li>
+  </ul>
+
+  <a href="index.html" class="back-arrow invisibile" title="Torna alla Home">
+    <img src="immagini/freccia2.png" alt="Torna alla Home">
+ </a>
+
+</nav>
+<div class="legenda">
+  <p class="scrittaLegenda">Legenda</p>
+  
+<div class="divLegenda">
+  <img src="immagini/marker-icon-blue.png" class="immagineLegenda">
+  <p class="testoLegenda">Bundesliga</p>
+</div>
+
+<div class="divLegenda">
+  <img src="immagini/marker-icon-green.png" class="immagineLegenda">
+  <p class="testoLegenda">2. Bundesliga</p>
+</div>
+
+</div>
+
+
+    
+
+  <div id="map"></div>
+
+  <!-- Link a Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Crea la mappa centrata su Roma
+    const map = L.map('map').setView([51.1657, 10.4515], 6); // Latitudine, Longitudine, Zoom
+
+
+    // Aggiunge il layer della mappa OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 18,
+    }).addTo(map);
+
+    // Lista di stadi (puoi aggiungerne fino a 50 o più)
+    const stadi = [
+       {
+    nome: "Signal Iduna Park",
+    serie: "Bundesliga",
+    descrizione: "Dortmund",
+    lat: 51.4926,
+    lon: 7.4515,
+    immagine: "./immagini/signal_iduna_park.png"
+  },
+  {
+    nome: "Allianz Arena",
+    serie: "Bundesliga",
+    descrizione: "Monaco di Baviera",
+    lat: 48.2188,
+    lon: 11.6247,
+    immagine: "./immagini/allianz_arena.png"
+  },
+  {
+    nome: "Olympiastadion",
+    serie: "Bundesliga",
+    descrizione: "Berlino",
+    lat: 52.5145,
+    lon: 13.2905,
+    immagine: "./immagini/olympiastadion.png"
+  },
+  {
+    nome: "Veltins-Arena",
+    serie: "Bundesliga",
+    descrizione: "Gelsenkirchen",
+    lat: 51.5544,
+    lon: 7.0675,
+    immagine: "./immagini/veltins_arena.png"
+  },
+  {
+    nome: "Mercedes-Benz Arena",
+    serie: "Bundesliga",
+    descrizione: "Stoccarda",
+    lat: 48.7928,
+    lon: 9.2321,
+    immagine: "./immagini/mercedes-benz-arena.png"
+  },
+  {
+    nome: "Red Bull Arena",
+    serie: "Bundesliga",
+    descrizione: "Lipsia",
+    lat: 51.3458,
+    lon: 12.3482,
+    immagine: "./immagini/red_bull_arena.png"
+  },
+  {
+    nome: "Europa-Park Stadion",
+    serie: "Bundesliga",
+    descrizione: "Friburgo",
+    lat: 48.0126,
+    lon: 7.8325,
+    immagine: "./immagini/europa-park-stadion.png"
+  },
+  {
+    nome: "MEWA Arena",
+    serie: "Bundesliga",
+    descrizione: "Magonza",
+    lat: 49.9843,
+    lon: 8.2319,
+    immagine: "./immagini/mewa-arena.png"
+  },
+  {
+    nome: "BayArena",
+    serie: "Bundesliga",
+    descrizione: "Leverkusen",
+    lat: 51.0381,
+    lon: 7.0026,
+    immagine: "./immagini/bayarena.png"
+  },
+  {
+    nome: "Borussia-Park",
+    serie: "Bundesliga",
+    descrizione: "Mönchengladbach",
+    lat: 51.1744,
+    lon: 6.3878,
+    immagine: "./immagini/borussia-park.png"
+  },
+
+  {
+    nome: "Volksparkstadion",
+    serie: "2. Bundesliga",
+    descrizione: "Amburgo",
+    lat: 53.5875,
+    lon: 9.8986,
+    immagine: "./immagini/volksparkstadion.png"
+  },
+  {
+    nome: "Heinz von Heiden-Arena",
+    serie: "2. Bundesliga",
+    descrizione: "Hannover",
+    lat: 52.3728,
+    lon: 9.7383,
+    immagine: "./immagini/heinz-von-heiden-arena.png"
+  },
+  {
+    nome: "Fritz-Walter-Stadion",
+    serie: "2. Bundesliga",
+    descrizione: "Kaiserslautern",
+    lat: 49.4400,
+    lon: 7.7686,
+    immagine: "./immagini/fritz_walter_stadion.png"
+  },
+  {
+    nome: "Max-Morlock-Stadion",
+    serie: "2. Bundesliga",
+    descrizione: "Norimberga",
+    lat: 49.4372,
+    lon: 11.1189,
+    immagine: "./immagini/max-morlock-stadion.png"
+  },
+  {
+    nome: "MDCC-Arena",
+    serie: "2. Bundesliga",
+    descrizione: "Magdeburgo",
+    lat: 52.1203,
+    lon: 11.6357,
+    immagine: "./immagini/mdcc-arena.png"
+  }];
+
+
+
+    // Ciclo per aggiungere i marker
+stadi.forEach(stadio => {
+
+  let iconOptions = {
+    title: "Stadio",
+    icon: L.icon({  // valore predefinito (può essere un'icona generica o nulla)
+      iconUrl: "./immagini/marker-icon-default.png",
+      iconSize: [25, 25]
+    })
+  };
+  var textcolorclass = "testo-blu"
+  var borderColor = "bordo-blu";
+  if (stadio.serie === "Bundesliga") {
+    textcolorclass = "testo-blu"
+    borderColor = "bordo-blu";
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-blue.png",
+      iconSize: [25, 35],
+    });
+  } else if (stadio.serie === "2. Bundesliga") {
+    borderColor = "bordo-verde";
+     textcolorclass = "testo-verde"
+    iconOptions.icon = L.icon({
+      iconUrl: "./immagini/marker-icon-green.png", 
+      iconSize: [25, 35]
+     
+    });
+    }
+
+  L.marker([stadio.lat, stadio.lon], iconOptions)
+    .addTo(map)
+    .bindPopup(`<b class="${textcolorclass}">${stadio.nome}</b> <br>${stadio.descrizione}  <img src="${stadio.immagine}" alt="Immagine di ${stadio.nome}" class="immagineStadio ${borderColor}"/>  `);
+});
+  </script>
+</body>
+</html>
