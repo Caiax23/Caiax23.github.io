@@ -283,7 +283,7 @@ position: absolute;
     padding: 20px;
     border-radius: 15px;
     font-weight: bold;
-        padding-right: 50px;
+    padding-right: 50px;
 }
 
 .divLegenda{
@@ -329,18 +329,20 @@ padding: 10px}
   
   }
 
-  .legenda{
-    position: absolute;
-    color: #fff;
-    top: 5rem;
-    right: 1rem;
-    z-index: 999;
-    background-color: #0c3f6bfa;
-    padding: 20px;
-    border-radius: 15px;
-    font-weight: bold;
-    padding-right: 20px;
-  }
+  .legenda {
+  position: absolute;
+  color: #fff;
+  top: 2rem;
+  right: 0.5rem;
+  z-index: 999;
+  background-color: #0c3f6bfa;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.85rem; /* più piccolo per schermi piccoli */
+  max-width: 90vw;     /* per evitare che esca fuori schermo */
+  box-sizing: border-box;
+}
 }
 
 
